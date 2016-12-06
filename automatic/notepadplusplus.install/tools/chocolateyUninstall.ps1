@@ -3,4 +3,7 @@ $fileType = 'EXE'
 $silentArgs = '/S'
 $uninst = Get-UninstallRegistryKey -softwareName 'Notepad++*'
 
-Uninstall-ChocolateyPackage -packageName $packageName -fileType $fileType -silentArgs $silentArgs -file $uninst.UninstallString
+if(!($uninst -eq $null))
+    {
+    Uninstall-ChocolateyPackage -packageName $packageName -fileType $fileType -silentArgs $silentArgs -file $uninst.UninstallString
+    }
